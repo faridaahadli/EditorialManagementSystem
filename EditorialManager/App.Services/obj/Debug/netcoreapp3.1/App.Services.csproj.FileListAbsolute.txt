@@ -1,0 +1,12 @@
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\bin\Debug\netcoreapp3.1\App.Services.deps.json
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\bin\Debug\netcoreapp3.1\App.Services.runtimeconfig.json
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\bin\Debug\netcoreapp3.1\App.Services.runtimeconfig.dev.json
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\bin\Debug\netcoreapp3.1\App.Services.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\bin\Debug\netcoreapp3.1\App.Services.pdb
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.csprojAssemblyReference.cache
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.AssemblyInfoInputs.cache
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.AssemblyInfo.cs
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.csproj.CoreCompileInputs.cache
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.pdb
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.genruntimeconfig.cache
