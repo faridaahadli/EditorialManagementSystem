@@ -9,7 +9,6 @@ C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManage
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\EditorialManager.pdb
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\EditorialManager.Views.dll
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\EditorialManager.Views.pdb
-C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\EntityFramework.SqlServerCompact.dll
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\Humanizer.dll
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -53,3 +52,15 @@ C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManage
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\obj\Debug\net5.0\ref\EditorialManager.dll
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\obj\Debug\net5.0\EditorialManager.pdb
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\obj\Debug\net5.0\EditorialManager.genruntimeconfig.cache
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\App.Core.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\App.Data.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\App.Services.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\App.Services.pdb
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\App.Core.pdb
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\App.Data.pdb
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs

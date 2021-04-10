@@ -10,3 +10,8 @@ C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\ob
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.dll
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.pdb
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.genruntimeconfig.cache
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\bin\Debug\netcoreapp3.1\App.Core.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\bin\Debug\netcoreapp3.1\App.Data.dll
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\bin\Debug\netcoreapp3.1\App.Core.pdb
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\bin\Debug\netcoreapp3.1\App.Data.pdb
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\App.Services\obj\Debug\netcoreapp3.1\App.Services.csproj.CopyComplete

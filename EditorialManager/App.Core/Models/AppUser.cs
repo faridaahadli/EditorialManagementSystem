@@ -8,5 +8,8 @@ namespace App.Core.Models
     public class AppUser:IdentityUser
     {
         public  bool IsActive { get; set; }
+        public int UniversityId { get; set; }
+        public University University { get; set; }
+        public int DegreeId { get; set; }
     }
 }
