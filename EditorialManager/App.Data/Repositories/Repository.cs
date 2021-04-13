@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace App.Data.Repositories
 {
-    class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly AppDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
@@ -16,9 +16,10 @@ namespace App.Data.Repositories
             _context = context;
             _dbSet = context.Set<TEntity>();
         }
-        public async Task AddAsync(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity)
         {
            await  _dbSet.AddAsync(entity);
+            return entity;
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
