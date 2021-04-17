@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "o0LX/UnDWCLo8NW7taEAGxywFaf3n5KjXUDUg2tQev+VP8XAeMneoqB6h5Mn96kW5+G2yAUekNr25b/Zt1NAMw==",
+  "dgSpecHash": "v/GqGPR9bXWtSUBlMcc3hojE6lqo2XZA317UrHHq7c4n9r/FZgbetE4FyCCDHCyPRQyq8/uX5uM+BajZIoYUPg==",
   "success": true,
   "projectFilePath": "C:\\Users\\EHEDLI FARIDA\\Desktop\\Editorialmanager\\EditorialManager\\EditorialManager\\EditorialManager.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.4\\microsoft.aspnetcore.cryptography.internal.5.0.4.nupkg.sha512",
     "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.4\\microsoft.aspnetcore.cryptography.keyderivation.5.0.4.nupkg.sha512",
@@ -98,7 +100,7 @@
     "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\system.private.uri\\4.3.2\\system.private.uri.4.3.2.nupkg.sha512",
     "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\EHEDLI FARIDA\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

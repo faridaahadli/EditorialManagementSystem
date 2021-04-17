@@ -36,5 +36,10 @@ namespace App.Data.Repositories
         {
             return await _dbSet.FindAsync(id);
         }
+
+        public void Remove(TEntity entity)
+        {
+            _dbSet.Remove(entity);
+        }
     }
 }

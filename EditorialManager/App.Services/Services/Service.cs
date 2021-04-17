@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace App.Services.Services
 {
-    class Service<TEntity> : IService<TEntity> where TEntity : class
+    public class Service<TEntity> : IService<TEntity> where TEntity : class
     {
         public readonly IUnitOfWork unitOfWork;
         private readonly IRepository<TEntity> _repository;
@@ -29,14 +29,19 @@ namespace App.Services.Services
             return _repository.GetAllAsync();
         }
 
-        public Task<TEntity> GetByIdAsync(int id)
+        public async Task<TEntity> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _repository.GetByIdAsync(id);
         }
 
-        public Task<TEntity> GetByIdAsync(string id)
+        public async Task<TEntity> GetByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return await _repository.GetByIdAsync(id);
+        }
+
+        public void Remove(TEntity entity)
+        {
+            _repository.Remove(entity);
         }
     }
 }
