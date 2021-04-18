@@ -12,7 +12,7 @@ namespace App.Core.Models
         public string Address { get; set; }
         public  bool IsActive { get; set; }
         public int UniversityId { get; set; }
-        public University University { get; set; }
+        public virtual University University { get; set; }
         public int DegreeId { get; set; }
         public string Title { get; set; }
     }
