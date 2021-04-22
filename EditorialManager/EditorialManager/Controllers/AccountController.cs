@@ -14,20 +14,23 @@ namespace EditorialManager.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IUserService _userService;
+        //private readonly IUserService _userService;
         private readonly IUniService _uniService;
         private readonly IMapper _mapper;
         public AccountController(IUserService userService, IUniService uniService,
             IMapper mapper)
         {
             _mapper = mapper;
-            _userService = userService;
+            //_userService = userService;
             _uniService = uniService;
         }
         // GET: AccountController
-        public ActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            //ViewData["Uni"]=
+            ViewData["Uni"] = await _uniService.GetAllAsync();
+            
+
             return View("Register");
         }
 
@@ -35,7 +38,7 @@ namespace EditorialManager.Controllers
         public ActionResult Register(UserInsertDto user)
         {
             var dbUser = _mapper.Map<AppUser>(user);
-            _userService.AddAsync(dbUser);
+            //_userService.AddAsync(dbUser);
 
             return RedirectToAction();
         }

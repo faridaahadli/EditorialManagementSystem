@@ -2,7 +2,8 @@
 @{
     Layout = null;
 }
-
+@using App.Core.Models
+@using App.Core.Enums
 
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
- 
+
     <div class="container">
         <main role="main" class="pb-3">
             <div class="container">
@@ -112,21 +113,25 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="university" class="cols-sm-2 control-label">University</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="address" id="address" placeholder="Enter your University" />
-                                            </div>
-                                        </div>
+                                        <select class="form-control" id="university">
+                                            <option disabled selected>Universitet secin</option>
+                                            @foreach (var item in Degree.GetValues())
+                                            {
+                                                
+                                                <option value=@Convert.ToInt32(item)>@item</option>
+                                            }
+
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label  for="university" class="cols-sm-2 control-label">University</label>
+                                        <label for="university" class="cols-sm-2 control-label">University</label>
                                         <select class="form-control" id="university">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                            <option disabled selected>Universitet secin</option>
+                                            @foreach (var item in (IEnumerable<University>)ViewData["Uni"])
+                                            {
+                                                <option value=@item.Id>@item.Name.ToUpper()</option>
+                                            }
+
                                         </select>
                                     </div>
                                     <div class="form-group ">

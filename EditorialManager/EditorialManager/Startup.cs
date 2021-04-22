@@ -1,4 +1,11 @@
+
+using App.Core.IUnitOfWorks;
+using App.Core.Repositories;
+using App.Core.Services;
 using App.Data;
+using App.Data.Repositories;
+using App.Data.UnitOfWorks;
+using App.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +32,11 @@ namespace EditorialManager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUniService, UniService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper(typeof(Startup));
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options =>
