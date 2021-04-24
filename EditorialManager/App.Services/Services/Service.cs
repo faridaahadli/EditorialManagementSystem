@@ -43,5 +43,12 @@ namespace App.Services.Services
         {
             _repository.Remove(entity);
         }
+
+        public async Task<TEntity> Update(TEntity entity)
+        {
+          await _repository.Update(entity);
+            await unitOfWork.CommitAsync();
+            return entity;
+        }
     }
 }

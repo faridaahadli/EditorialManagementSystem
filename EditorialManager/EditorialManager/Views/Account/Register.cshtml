@@ -4,7 +4,7 @@
 }
 @using App.Core.Models
 @using App.Core.Enums
-
+@model EditorialManager.DTOs.UserInsertDto
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,7 @@
                             <div class="card-header">Register</div>
                             <div class="card-body">
 
-                                <form class="form-horizontal" method="post" action="#">
+                                <form asp-controller="Account" asp-action="Register" method="post">
 
                                     <div class="form-group">
                                         <label for="firstname" class="cols-sm-2 control-label">Firstname</label>
@@ -34,6 +34,10 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                                 <input type="text" class="form-control" name="firstname" id="name" placeholder="Enter your Firstname" />
+                                                <div class="col-md-12">
+                                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -44,6 +48,9 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                                                 <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Enter your Lastname" />
+                                                <div class="col-md-12">
+                                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -53,6 +60,9 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                                                 <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                                                <div class="col-md-12">
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +71,10 @@
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                                <input type="password" class="form-control" name="passwordhash" id="password" placeholder="Enter your Password" />
+                                                <div class="col-md-12">
+                                                    <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -71,7 +84,10 @@
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
+                                                <input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm your Password" />
+                                                <div class="col-md-12">
+                                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -81,6 +97,9 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                                                 <input type="text" class="form-control" name="title" id="title" placeholder="Enter your Title" />
+                                                <div class="col-md-12">
+                                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -101,20 +120,11 @@
                                                 <input type="text" class="form-control" name="address" id="address" placeholder="Enter your Address" />
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>                                 
                                     <div class="form-group">
                                         <label for="degree" class="cols-sm-2 control-label">Degree</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="degree" id="degree" placeholder="Enter your Degree" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="university" class="cols-sm-2 control-label">University</label>
-                                        <select class="form-control" id="university">
-                                            <option disabled selected>Universitet secin</option>
+                                        <select class="form-control" id="degreeId" name="degreeId">
+                                            <option disabled selected>Choose your degree</option>
                                             @foreach (var item in Degree.GetValues())
                                             {
                                                 
@@ -125,8 +135,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="university" class="cols-sm-2 control-label">University</label>
-                                        <select class="form-control" id="university">
-                                            <option disabled selected>Universitet secin</option>
+                                        <select class="form-control" id="universityId" name="universityId">
+                                            <option disabled selected>Choose your university</option>
                                             @foreach (var item in (IEnumerable<University>)ViewData["Uni"])
                                             {
                                                 <option value=@item.Id>@item.Name.ToUpper()</option>
@@ -135,7 +145,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group ">
-                                        <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                                     </div>
                                     <div class="login-register">
                                         <a href="index.php">Login</a>

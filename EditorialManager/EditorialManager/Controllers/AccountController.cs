@@ -2,9 +2,14 @@
 using App.Core.Services;
 using App.Services.Services;
 using AutoMapper;
+using CryptoHelper;
 using EditorialManager.DTOs;
+using EditorialManager.Models;
+using EditorialManager.Validators;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,18 +20,25 @@ namespace EditorialManager.Controllers
     public class AccountController : Controller
     {
         //private readonly IUserService _userService;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly ILogger<AccountController> _logger;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly IUniService _uniService;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
         public AccountController(IUserService userService, IUniService uniService,
+            UserManager<AppUser> userManager,SignInManager<AppUser> signInManager,
             IMapper mapper)
         {
             _mapper = mapper;
-            //_userService = userService;
+            _userService = userService;
             _uniService = uniService;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         // GET: AccountController
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Register()
         {
             ViewData["Uni"] = await _uniService.GetAllAsync();
             
@@ -35,14 +47,82 @@ namespace EditorialManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(UserInsertDto user)
+        public async Task<IActionResult> Register(UserInsertDto user)
         {
-            var dbUser = _mapper.Map<AppUser>(user);
-            //_userService.AddAsync(dbUser);
+            UserValidator validator = new UserValidator();
+            var result=validator.Validate(user);
+            if (!result.IsValid)
+            {
+                ViewData["Uni"] = await _uniService.GetAllAsync();
+                return View("Register",user);
+            }
 
-            return RedirectToAction();
+            user.PasswordHash = Crypto.HashPassword(user.PasswordHash);
+            var dbUser = _mapper.Map<AppUser>(user);
+            await _userService.AddAsync(dbUser);
+            //await _userManager.CreateAsync(dbUser,dbUser.PasswordHash);
+
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(dbUser);
+            var confLink = Url.Action("ConfEmail", "Account",
+            new { userId = dbUser.Id, tok = token }, Request.Scheme);
+            EmailSender email = new EmailSender();
+            try
+            {
+                await email.SendEmailAsync(user.Email, "Confirmation Email", confLink);
+            }
+            catch (Exception err)
+            {
+
+            }
+            return RedirectToAction("Index","Home");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            return View("Login");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            var user =  _userService.GetUserByEmail(model.Email);
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("register");
+            }
+            if (user == null)
+                return RedirectToAction("register");
+            var result = await _signInManager.PasswordSignInAsync(user.Email, model.Password,true,false);
+
+            if (!result.Succeeded)
+            {
+                return RedirectToAction("register");
+            }
+            return View("LogIn", model);
+          
+        }
+        [HttpGet]
+        public async Task<IActionResult> ConfEmail(string userId, string tok)
+        {
+            if (userId == null || tok == null)
+            {
+                return RedirectToAction("Home", "Index");
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return RedirectToAction("Home", "Index");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, tok);
+            if (!result.Succeeded)
+            {
+                user.IsActive = true;
+                await _userService.Update(user);
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index"); 
+        }
         // GET: AccountController/Details/5
         public ActionResult Details(int id)
         {

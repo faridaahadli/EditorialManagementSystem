@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,5 +43,17 @@ namespace App.Data.Repositories
         {
             _dbSet.Remove(entity);
         }
+
+        public async Task<TEntity> Update(TEntity entity)
+        {
+           
+           _dbSet.Update(entity);
+            return entity;
+        }
+
+        //public Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

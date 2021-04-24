@@ -1,5 +1,6 @@
 ﻿using App.Core.IUnitOfWorks;
 using App.Core.Repositories;
+using App.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,9 +10,10 @@ namespace App.Data.UnitOfWorks
 {
     public class UnitOfWork:IUnitOfWork
     {
-        public IUserRepository Users => throw new NotImplementedException();
 
-        IUserRepository IUnitOfWork.Users => throw new NotImplementedException();
+        private UserRepository _userRepository;
+        public IUserRepository Users =>_userRepository=_userRepository
+            ??new UserRepository(_context);
 
         private readonly AppDbContext _context;
         public UnitOfWork(AppDbContext context)

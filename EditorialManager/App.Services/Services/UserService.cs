@@ -5,6 +5,7 @@ using App.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace App.Services.Services
 {
@@ -14,5 +15,9 @@ namespace App.Services.Services
          :base(unitOfWork,repository)
         { }
 
+        public AppUser GetUserByEmail(string email)
+        {
+            return unitOfWork.Users.GetUserByEmail(email);
+        }
     }
 }
