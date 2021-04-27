@@ -59,9 +59,10 @@ namespace EditorialManager.Controllers
 
             user.PasswordHash = Crypto.HashPassword(user.PasswordHash);
             var dbUser = _mapper.Map<AppUser>(user);
+            dbUser.UserName = dbUser.Email;
             await _userService.AddAsync(dbUser);
             //await _userManager.CreateAsync(dbUser,dbUser.PasswordHash);
-
+            var test=await _userManager.AddToRoleAsync(dbUser, "author");
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(dbUser);
             var confLink = Url.Action("ConfEmail", "Account",
             new { userId = dbUser.Id, tok = token }, Request.Scheme);
@@ -99,8 +100,8 @@ namespace EditorialManager.Controllers
             {
                 return RedirectToAction("register");
             }
-            return View("LogIn", model);
-          
+            return RedirectToAction("index", "home");
+
         }
         [HttpGet]
         public async Task<IActionResult> ConfEmail(string userId, string tok)
