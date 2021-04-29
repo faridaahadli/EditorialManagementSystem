@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EditorialManager.Controllers
 {
-    [Authorize(Roles ="author")]
+   // [Authorize(Roles ="author")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -25,15 +25,15 @@ namespace EditorialManager.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
 }
