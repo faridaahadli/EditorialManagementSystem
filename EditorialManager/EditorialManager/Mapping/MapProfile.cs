@@ -14,7 +14,8 @@ namespace EditorialManager.Mapping
         {
             CreateMap<UserInsertDto, AppUser>();
             CreateMap<ArticleInsDto, Article>();
-            CreateMap<ArticleInsDto, EditorToArticle>();
+            CreateMap<ArticleInsDto, EditorToArticle>()
+                .ForMember(dst=>dst.UserId,opt=>opt.MapFrom(src=>src.EditorId));
         }
        
     }

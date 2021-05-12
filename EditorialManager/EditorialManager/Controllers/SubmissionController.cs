@@ -24,12 +24,14 @@ namespace EditorialManager.Controllers
         private readonly IUserService _userService;
         private readonly IArticleTypeService _articleTypeService;
         private readonly IArticleService _articleService;
+        private readonly IEditorToArticleService _editorToArticleService;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
 
         public SubmissionController(IUniService uniService,IUserService userService,
             IArticleService articleService, UserManager<AppUser> userManager,
+            IEditorToArticleService editorToArticleService,
             IArticleTypeService articleTypeService, IHostingEnvironment hostingEnvironment,
             IMapper mapper)
         {
@@ -37,6 +39,7 @@ namespace EditorialManager.Controllers
             _uniService = uniService;
             _articleTypeService = articleTypeService;
             _articleService = articleService;
+            _editorToArticleService = editorToArticleService;
             _hostingEnvironment = hostingEnvironment;
             _userManager = userManager;
             _mapper = mapper;
@@ -51,7 +54,7 @@ namespace EditorialManager.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Insert(ArticleInsDto submission)
+        public async Task<IActionResult> Insert(ArticleInsDto submission,bool radioSelectYes)
         {
             ViewData["editors"] = _userService.GetUsersByRole("editor");
             ViewData["types"] = (List<ArticleType>)await _articleTypeService.GetAllAsync();
@@ -69,8 +72,20 @@ namespace EditorialManager.Controllers
             article.SubmitDate = DateTime.UtcNow;
             article.UserId = _userManager.GetUserId(HttpContext.User);
             await _articleService.AddAsync(article);
-
+            var editorToArticle = _mapper.Map<EditorToArticle>(submission);
+            editorToArticle.ArticleId = article.Id;
+            editorToArticle.StatusId = 1;
+            await _editorToArticleService.AddAsync(editorToArticle);
             return View("Index",submission);
         }
+
+        //[HttpPost]
+        //public JsonResult TableDataIns([FromBody] List<ReviewerViewModel> reviewers)
+        //{
+        //    //ViewData["editors"] = _userService.GetUsersByRole("editor");
+        //    //ViewData["types"] = (List<ArticleType>)await _articleTypeService.GetAllAsync();
+
+        //    return Json("Index");
+        //}
     }
 }

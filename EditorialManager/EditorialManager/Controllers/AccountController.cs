@@ -21,7 +21,6 @@ namespace EditorialManager.Controllers
     {
         //private readonly IUserService _userService;
         private readonly UserManager<AppUser> _userManager;
-        private readonly ILogger<AccountController> _logger;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IUniService _uniService;
         private readonly IUserService _userService;
