@@ -19,5 +19,10 @@ namespace App.Services.Services
         {
             return unitOfWork.Users.GetUserByEmail(email);
         }
+
+        public List<AppUser> GetUsersByRole(string role)
+        {
+            return unitOfWork.Users.GetUsersByRole(role);
+        }
     }
 }

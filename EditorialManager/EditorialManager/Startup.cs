@@ -35,11 +35,13 @@ namespace EditorialManager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped(typeof(IService<>), typeof(Service<>));
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IUniService, UniService>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient(typeof(IService<>), typeof(Service<>));
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUniService, UniService>();
+            services.AddTransient<IArticleTypeService, ArticleTypeService>();
+            services.AddTransient<IArticleService,ArticleService>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();           
             services.AddAutoMapper(typeof(Startup));
             services.AddControllersWithViews()
                 .AddFluentValidation(s =>

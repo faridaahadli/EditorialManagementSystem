@@ -9,5 +9,6 @@ namespace App.Core.Services
     public interface IUserService:IService<AppUser>
     {
         AppUser GetUserByEmail(string email);
+        List<AppUser> GetUsersByRole(string role);
     }
 }

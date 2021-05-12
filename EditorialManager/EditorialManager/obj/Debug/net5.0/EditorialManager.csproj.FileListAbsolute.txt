@@ -97,3 +97,4 @@ C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManage
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\obj\Debug\net5.0\Razor\Views\Submission\Index.cshtml.g.cs

@@ -9,6 +9,8 @@ namespace App.Core.IUnitOfWorks
    public interface IUnitOfWork
     {
         IUserRepository Users { get; }
+        IArticleRepository Articles { get; }
+        IArticleTypeRepository ArticleTypes { get;}
         Task CommitAsync();
         void Commit();
 

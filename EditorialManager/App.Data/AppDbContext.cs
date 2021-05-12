@@ -13,5 +13,9 @@ namespace App.Data
 
         DbSet<AppUser> Users { get; set;}
         DbSet<University> Universities { get; set; }
+        DbSet<ArticleType> ArticleTypes { get; set; }
+        DbSet<Article> Articles { get; set; }
+        DbSet<OfferingReviewer> OfferingReviewers { get; set; }
+        DbSet<EditorToArticle> EditorToArticles { get; set; }
     }
 }

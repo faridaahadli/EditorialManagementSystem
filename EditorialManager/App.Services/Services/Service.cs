@@ -46,7 +46,7 @@ namespace App.Services.Services
 
         public async Task<TEntity> Update(TEntity entity)
         {
-          await _repository.Update(entity);
+            await _repository.Update(entity);
             await unitOfWork.CommitAsync();
             return entity;
         }

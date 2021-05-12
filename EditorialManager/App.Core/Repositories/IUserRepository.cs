@@ -9,5 +9,6 @@ namespace App.Core.Repositories
    public interface IUserRepository:IRepository<AppUser>
     {
         AppUser GetUserByEmail(string email);
+        List<AppUser> GetUsersByRole(string role);
     }
 }

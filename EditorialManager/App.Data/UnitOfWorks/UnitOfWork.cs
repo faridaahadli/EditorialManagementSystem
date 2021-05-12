@@ -15,6 +15,14 @@ namespace App.Data.UnitOfWorks
         public IUserRepository Users =>_userRepository=_userRepository
             ??new UserRepository(_context);
 
+        private ArticleRepository _articleRepository;
+        public IArticleRepository Articles => _articleRepository = _articleRepository
+            ?? new ArticleRepository(_context);
+
+        private ArticleTypeRepository _articleTypeRepository;
+        public IArticleTypeRepository ArticleTypes => _articleTypeRepository = _articleTypeRepository
+            ?? new ArticleTypeRepository(_context);
+
         private readonly AppDbContext _context;
         public UnitOfWork(AppDbContext context)
         {

@@ -12,7 +12,6 @@ namespace App.Core.Repositories
         Task<TEntity> GetByIdAsync(string id);
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> AddAsync(TEntity entity);
-        //Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> Update(TEntity entity);
         void Remove(TEntity entity);
         

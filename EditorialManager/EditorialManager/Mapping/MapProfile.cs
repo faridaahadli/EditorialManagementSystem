@@ -13,6 +13,8 @@ namespace EditorialManager.Mapping
         public MapProfile()
         {
             CreateMap<UserInsertDto, AppUser>();
+            CreateMap<ArticleInsDto, Article>();
+            CreateMap<ArticleInsDto, EditorToArticle>();
         }
        
     }

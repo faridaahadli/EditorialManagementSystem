@@ -10,7 +10,8 @@ namespace EditorialManager.Validators
 {
     public class UserValidator:AbstractValidator<UserInsertDto>
     {
-        private readonly IUserService _userService;
+       
+
 
         public UserValidator()
         {
@@ -18,7 +19,7 @@ namespace EditorialManager.Validators
             RuleFor(x => x.Email)
                 .NotNull().WithMessage("This field is required")
                 .EmailAddress().WithMessage("Please enter email format");
-                
+              
             RuleFor(x => x.FirstName)
                 .NotNull().WithMessage("This field is required")
                 .MaximumLength(50);

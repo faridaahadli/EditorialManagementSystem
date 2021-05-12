@@ -1,0 +1,284 @@
+﻿
+@{
+    ViewData["Title"] = "Submission page";
+}
+@using EditorialManager.DTOs;
+@using App.Core.Models
+@using App.Core.Enums
+@model ArticleInsDto
+<form asp-action="Insert" asp-controller="submission" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="selectedFile">Choose file you append (only .pdf supported)</label>
+        <input type="file" asp-for="ArticleFile" class="form-control-file" id="selectedFile" >
+        <span asp-validation-for="ArticleFile" class="text-danger"></span>
+    </div>
+
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
+                        Choose Article Type
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseFive" class="collapse " aria-labelledby="headingFive" data-parent="#accordionExample">
+                <div class="card-body">
+                    <p>
+                        Please select the article type
+                    </p>
+                    <div class="form-group">
+                        <label for="articleType">Select Article Type</label>
+                        <select class="form-control" id="articleType" name="articleTypeId">
+                            @foreach (var item in (IEnumerable<ArticleType>)ViewData["types"])
+                            {
+                                <option value=@item.Id>@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Choose Editor
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <p>
+                        Please select the editor you would like to handle your manuscript.
+                    </p>
+                    <div class="form-group">
+                        <label for="userId">Select Editor</label>
+                        <select class="form-control" id="userId" name="editorId">
+                            @foreach (var item in (IEnumerable<AppUser>) ViewData["editors"])
+                            {
+                                <option value="@item.Id">@item.Firstname @item.LastName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Suggest Reviewers
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    <p>
+                        Please suggest potential reviewers for this submission.
+                    </p>
+                    <div class="container">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">+ Add User</button>
+
+
+                        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">User Information</label>
+                                            <div class="col-md-12 p-2">
+                                                <input type="text" class="form-control" id="sgsFirst" name="firstname" placeholder="Firstname">
+                                            </div>
+                                            <div class="col-md-12 p-2">
+                                                <input type="text" class="form-control" id="sgsLast" name="lastname" placeholder="Lastname">
+                                            </div>
+                                            <div class="col-md-12 p-2">
+                                                <input type="text" class="form-control" id="sgsEmail" name="email" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="sgsBtn" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row p-2">
+                        <table class="table" id="sgsTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Firstname</th>
+                                    <th scope="col">Lastname</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sgsBody">
+                                @*<tr>
+                                        <td>Farida</td>
+                                        <td>Ahadli</td>
+                                        <td>farida@gmail.com</td>
+                                        <td>
+                                            <button type="button" class="btn rowDlt btn-outline-danger">Delete</button>
+                                        </td>
+                                    </tr>*@
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Oppose Reviewers
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    <p>Please identify anyone who you would prefer not to review this submission.</p>
+                    <div class="container">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">+ Add User</button>
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    @*Oppose reviwer modal*@
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">User Information</label>
+                                            <div class="col-md-12 p-2">
+                                                <input type="text" class="form-control" id="opsFirst" name="firstname" placeholder="Firstname">
+                                            </div>
+                                            <div class="col-md-12 p-2">
+                                                <input type="text" class="form-control" id="opsLast" name="lastname" placeholder="Lastname">
+                                            </div>
+                                            <div class="col-md-12 p-2">
+                                                <input type="text" class="form-control" id="opsEmail" name="email" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="opsBtn" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <table class="table" id="opsTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Firstname</th>
+                                    <th scope="col">Lastname</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="opsBody">
+                                @*<tr>
+                                        <td>Farida</td>
+                                        <td>Ahadli</td>
+                                        <td>farida@gmail.com</td>
+                                        <td>
+                                            <button type="button" class="btn rowDlt btn-outline-danger">Delete</button>
+                                        </td>
+                                    </tr>*@
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Note to Editor
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div class="card-body">
+
+                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Note"></textarea>
+                    <span asp-validation-for="Note" class="text-danger"></span>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 p-2">
+        <button type="submit" class="btn  btn-primary">Submit</button>
+    </div>
+
+</form>
+
+
+
+@section Scripts{
+    <script>
+
+        $("#sgsBtn").on('click', function (e) {
+            console.log("hello")
+            var text = "<tr>" +
+                "<td>" + $("#sgsFirst").val() + "</td>" +
+                "<td>" + $("#sgsLast").val() + "</td>" +
+                "<td>" + $("#sgsEmail").val() + "</td>" +
+                "<td>" + "<button type='button' class='btn rowDlt btn-outline-danger'>Delete</button>" +
+                "</td>" +
+                "</tr>"
+            $("#sgsFirst").val("")
+            $("#sgsLast").val("")
+            $("#sgsEmail").val("")
+            $("#sgsBody").append(text)
+            DeleteRow()
+        })
+        $("#opsBtn").on('click', function (e) {
+            console.log("hello")
+            var text = "<tr>" +
+                "<td>" + $("#opsFirst").val() + "</td>" +
+                "<td>" + $("#opsLast").val() + "</td>" +
+                "<td>" + $("#opsEmail").val() + "</td>" +
+                "<td>" + "<button type='button' class='btn rowDlt btn-outline-danger'>Delete</button>" +
+                "</td>" +
+                "</tr>"
+            $("#opsFirst").val("")
+            $("#opsLast").val("")
+            $("#opsEmail").val("")
+            $("#opsBody").append(text)
+            DeleteRow()
+        })
+
+        function DeleteRow() {
+            $(".rowDlt").on('click', function (e) {
+                $(this).closest("tr").remove();
+            })
+        }
+
+    </script>
+}

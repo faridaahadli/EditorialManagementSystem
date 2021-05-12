@@ -22,5 +22,18 @@ namespace App.Data.Repositories
            AppUser user= (AppUser)_context.Users.SingleOrDefault(p => p.Email == email);
             return user;
         }
+
+        public List<AppUser> GetUsersByRole(string role)
+        {
+            List<AppUser> editors = new List<AppUser>();
+            var id = _context.Roles.FirstOrDefault(p => p.Name == role).Id;
+            var roles = _context.UserRoles.Where(p => p.RoleId == id);
+            foreach(var userRole in roles)
+            {
+                AppUser user = (AppUser)_context.Users.FirstOrDefault(p => p.Id == userRole.UserId);
+                editors.Add(user);
+            }
+            return editors;
+        }
     }
 }
