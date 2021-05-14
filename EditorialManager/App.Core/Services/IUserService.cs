@@ -10,5 +10,6 @@ namespace App.Core.Services
     {
         AppUser GetUserByEmail(string email);
         List<AppUser> GetUsersByRole(string role);
+        bool CheckUniqueEmail(string email);
     }
 }

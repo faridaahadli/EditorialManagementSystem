@@ -48,10 +48,13 @@ namespace EditorialManager
                 .AddFluentValidation(s =>
                 {
                     s.RegisterValidatorsFromAssemblyContaining<Startup>();
-                    s.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                    s.RunDefaultMvcValidationAfterFluentValidationExecutes = true;
                 }
-                 
-                );
+
+                ).AddMvcOptions(options => {
+                
+                });
+
 
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

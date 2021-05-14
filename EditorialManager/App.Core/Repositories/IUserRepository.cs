@@ -10,5 +10,6 @@ namespace App.Core.Repositories
     {
         AppUser GetUserByEmail(string email);
         List<AppUser> GetUsersByRole(string role);
+        bool CheckUniqueEmail(string email);
     }
 }

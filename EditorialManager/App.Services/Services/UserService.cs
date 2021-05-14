@@ -15,6 +15,11 @@ namespace App.Services.Services
          :base(unitOfWork,repository)
         { }
 
+        public bool CheckUniqueEmail(string email)
+        {
+            return unitOfWork.Users.CheckUniqueEmail(email);
+        }
+
         public AppUser GetUserByEmail(string email)
         {
             return unitOfWork.Users.GetUserByEmail(email);

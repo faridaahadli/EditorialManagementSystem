@@ -28,4 +28,8 @@
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Submission\Index.cshtml" />
+  </ItemGroup>
+
 </Project>

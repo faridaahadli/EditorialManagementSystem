@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EditorialManager.Controllers
 {
-   // [Authorize(Roles ="author")]
+    [Authorize(Roles ="author")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

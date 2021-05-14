@@ -17,9 +17,18 @@ namespace App.Data.Repositories
             _context=context;
         }
 
+        public bool CheckUniqueEmail(string email)
+        {
+            if (_context.Users.Any(prop => prop.Email == email))
+            {
+                return false;
+            }
+            return true;
+        }
+
         public AppUser GetUserByEmail(string email)
         {
-           AppUser user= (AppUser)_context.Users.SingleOrDefault(p => p.Email == email);
+           AppUser user=(AppUser)_context.Users.SingleOrDefault(p => p.Email == email);
             return user;
         }
 

@@ -1,5 +1,6 @@
 ﻿using App.Core.Models;
 using App.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace App.Data.Repositories
 
         public IEnumerable<Article> GetArticlesByUserId(string id)
         {
-            return _context.Set<Article>().Where(p => p.UserId == id);
+            return _context.Set<Article>().Include(prop=>prop.ArticleType)
+                .Where(p => p.UserId == id);
         }
     }
 }

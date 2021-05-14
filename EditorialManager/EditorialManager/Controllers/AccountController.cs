@@ -55,7 +55,12 @@ namespace EditorialManager.Controllers
                 ViewData["Uni"] = await _uniService.GetAllAsync();
                 return View("Register",user);
             }
-
+            if (!_userService.CheckUniqueEmail(user.Email))
+            {
+                ModelState.AddModelError("Email", "This mail address already exists");
+                ViewData["Uni"] = await _uniService.GetAllAsync();
+                return View("Register", user);
+            }
             user.PasswordHash = Crypto.HashPassword(user.PasswordHash);
             var dbUser = _mapper.Map<AppUser>(user);
             dbUser.UserName = dbUser.Email;
@@ -76,6 +81,7 @@ namespace EditorialManager.Controllers
 
             }
             return RedirectToAction("Index","Home");
+        
         }
 
         [HttpGet]
@@ -124,12 +130,14 @@ namespace EditorialManager.Controllers
             }
             return RedirectToAction("Index"); 
         }
-        // GET: AccountController/Details/5
-        public ActionResult Details(int id)
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Account");
         }
 
-     
+
     }
 }

@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 
 namespace EditorialManager.Controllers
 {
+
     public class SubmissionController : Controller
     {
         private readonly IUniService _uniService;
@@ -52,7 +53,14 @@ namespace EditorialManager.Controllers
             return View();
 
         }
+        [HttpGet]
+        public async Task<IActionResult> Submissions()
+        {
+            var list=_articleService.GetArticlesByUserId(_userManager.GetUserId(HttpContext.User));
+           
+            return View(list);
 
+        }
         [HttpPost]
         public async Task<IActionResult> Insert(ArticleInsDto submission,bool radioSelectYes)
         {
