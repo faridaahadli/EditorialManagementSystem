@@ -65,27 +65,24 @@ namespace EditorialManager.Controllers
                 return View("Index", submission);
             }
             var filename = await FileUpload.SaveFile(Path.
-                Combine(_hostingEnvironment.WebRootPath, "files"), submission.ArticleFile);
+                Combine(_hostingEnvironment.WebRootPath, "files"), submission.ArticleFile);                  
 
             var article=_mapper.Map<Article>(submission);
             article.FilePath = filename;
             article.SubmitDate = DateTime.UtcNow;
             article.UserId = _userManager.GetUserId(HttpContext.User);
+            if (radioSelectYes)
+            {
+                article.IsAllowed = true;
+            }
             await _articleService.AddAsync(article);
             var editorToArticle = _mapper.Map<EditorToArticle>(submission);
             editorToArticle.ArticleId = article.Id;
-            editorToArticle.StatusId = 1;
+            editorToArticle.StatusId = 1;         
             await _editorToArticleService.AddAsync(editorToArticle);
             return View("Index",submission);
         }
 
-        //[HttpPost]
-        //public JsonResult TableDataIns([FromBody] List<ReviewerViewModel> reviewers)
-        //{
-        //    //ViewData["editors"] = _userService.GetUsersByRole("editor");
-        //    //ViewData["types"] = (List<ArticleType>)await _articleTypeService.GetAllAsync();
-
-        //    return Json("Index");
-        //}
+      
     }
 }

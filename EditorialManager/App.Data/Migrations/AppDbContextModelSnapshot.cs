@@ -32,6 +32,9 @@ namespace App.Data.Migrations
                     b.Property<string>("FilePath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsAllowed")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("SubmitDate")
                         .HasColumnType("datetime2");
 
@@ -91,35 +94,6 @@ namespace App.Data.Migrations
                     b.HasIndex("ArticleId");
 
                     b.ToTable("EditorToArticles");
-                });
-
-            modelBuilder.Entity("App.Core.Models.OfferingReviewer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ArticleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleId");
-
-                    b.ToTable("OfferingReviewers");
                 });
 
             modelBuilder.Entity("App.Core.Models.University", b =>
@@ -399,17 +373,6 @@ namespace App.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUser");
-
-                    b.Navigation("Article");
-                });
-
-            modelBuilder.Entity("App.Core.Models.OfferingReviewer", b =>
-                {
-                    b.HasOne("App.Core.Models.Article", "Article")
-                        .WithMany()
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("Article");
                 });

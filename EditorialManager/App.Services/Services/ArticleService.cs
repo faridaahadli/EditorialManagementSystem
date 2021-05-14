@@ -15,5 +15,10 @@ namespace App.Services.Services
         {
 
         }
+
+        public IEnumerable<Article> GetArticlesByUserId(string id)
+        {
+            return unitOfWork.Articles.GetArticlesByUserId(id);
+        }
     }
 }

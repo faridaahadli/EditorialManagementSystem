@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210510112607_article table created at database")]
-    partial class articletablecreatedatdatabase
+    [Migration("20210513082657_initial migration")]
+    partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,11 +28,14 @@ namespace App.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ArticleTypeId")
+                    b.Property<int>("ArticleTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("FilePath")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAllowed")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("SubmitDate")
                         .HasColumnType("datetime2");
@@ -64,33 +67,35 @@ namespace App.Data.Migrations
                     b.ToTable("ArticleTypes");
                 });
 
-            modelBuilder.Entity("App.Core.Models.OfferingReviewer", b =>
+            modelBuilder.Entity("App.Core.Models.EditorToArticle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
+                    b.Property<int>("StatusId")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AppUserId");
+
                     b.HasIndex("ArticleId");
 
-                    b.ToTable("OfferingReviewers");
+                    b.ToTable("EditorToArticles");
                 });
 
             modelBuilder.Entity("App.Core.Models.University", b =>
@@ -344,7 +349,9 @@ namespace App.Data.Migrations
                 {
                     b.HasOne("App.Core.Models.ArticleType", "ArticleType")
                         .WithMany()
-                        .HasForeignKey("ArticleTypeId");
+                        .HasForeignKey("ArticleTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("App.Core.Models.AppUser", "User")
                         .WithMany()
@@ -355,13 +362,19 @@ namespace App.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("App.Core.Models.OfferingReviewer", b =>
+            modelBuilder.Entity("App.Core.Models.EditorToArticle", b =>
                 {
+                    b.HasOne("App.Core.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("App.Core.Models.Article", "Article")
                         .WithMany()
                         .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Article");
                 });

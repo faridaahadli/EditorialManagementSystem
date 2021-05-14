@@ -73,6 +73,7 @@ namespace EditorialManager.Controllers
             catch (Exception err)
             {
 
+
             }
             return RedirectToAction("Index","Home");
         }
