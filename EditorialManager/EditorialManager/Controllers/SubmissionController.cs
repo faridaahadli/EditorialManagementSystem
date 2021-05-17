@@ -61,6 +61,22 @@ namespace EditorialManager.Controllers
             return View(list);
 
         }
+        [HttpGet]
+        public async Task<IActionResult> ReviewArticles()
+        {
+            var list = _articleService.GetReviewAllowedArticles();
+
+            return View(list);
+
+        }
+        [HttpGet]
+        public async Task<IActionResult> SubmissionInfo()
+        {
+            //var list = _articleService.GetArticlesByUserId(_userManager.GetUserId(HttpContext.User));
+
+            return View();
+
+        }
         [HttpPost]
         public async Task<IActionResult> Insert(ArticleInsDto submission,bool radioSelectYes)
         {

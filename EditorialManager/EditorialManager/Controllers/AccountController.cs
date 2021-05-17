@@ -122,7 +122,7 @@ namespace EditorialManager.Controllers
                 return RedirectToAction("Home", "Index");
             }
             var result = await _userManager.ConfirmEmailAsync(user, tok);
-            if (!result.Succeeded)
+            if (result.Succeeded)
             {
                 user.IsActive = true;
                 await _userService.Update(user);

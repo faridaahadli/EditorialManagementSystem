@@ -11,6 +11,7 @@ namespace App.Core.IUnitOfWorks
         IUserRepository Users { get; }
         IArticleRepository Articles { get; }
         IArticleTypeRepository ArticleTypes { get;}
+        IArticleReviewRepository ArticleReviews { get; }
         Task CommitAsync();
         void Commit();
 

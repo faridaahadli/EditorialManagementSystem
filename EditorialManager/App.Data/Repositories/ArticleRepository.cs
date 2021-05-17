@@ -23,5 +23,13 @@ namespace App.Data.Repositories
             return _context.Set<Article>().Include(prop=>prop.ArticleType)
                 .Where(p => p.UserId == id);
         }
+
+        public IEnumerable<Article> GetReviewAllowedArticles()
+        {
+            var list = _context.Set<Article>().Include(p => p.ArticleType)
+                .Where(p => p.IsAllowed).OrderByDescending(p=>p.SubmitDate);
+            
+            return list;
+        }
     }
 }

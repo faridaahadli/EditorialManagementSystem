@@ -9,5 +9,6 @@ namespace App.Core.Repositories
     public interface IArticleRepository:IRepository<Article>
     {
         IEnumerable<Article> GetArticlesByUserId(string id);
+        IEnumerable<Article> GetReviewAllowedArticles();
     }
 }

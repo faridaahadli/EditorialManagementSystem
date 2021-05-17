@@ -9,6 +9,8 @@ namespace App.Core.Models
         public int Id { get; set; }
         public int ArticleTypeId { get; set; }
         public virtual ArticleType ArticleType { get; set; }
+        public int? ParentArticleId { get; set; }
+        public virtual Article ParentArticle { get; set; }
         public string FilePath { get; set; }
         public bool IsAllowed { get; set; }
         public virtual AppUser User { get; set; }

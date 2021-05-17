@@ -35,6 +35,9 @@ namespace App.Data.Migrations
                     b.Property<bool>("IsAllowed")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("ParentArticleId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("SubmitDate")
                         .HasColumnType("datetime2");
 
@@ -45,9 +48,36 @@ namespace App.Data.Migrations
 
                     b.HasIndex("ArticleTypeId");
 
+                    b.HasIndex("ParentArticleId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Articles");
+                });
+
+            modelBuilder.Entity("App.Core.Models.ArticleReviewer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("ArticleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Review")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ArticleId");
+
+                    b.ToTable("ArticleReviewers");
                 });
 
             modelBuilder.Entity("App.Core.Models.ArticleType", b =>
@@ -351,13 +381,34 @@ namespace App.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("App.Core.Models.Article", "ParentArticle")
+                        .WithMany()
+                        .HasForeignKey("ParentArticleId");
+
                     b.HasOne("App.Core.Models.AppUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("ArticleType");
 
+                    b.Navigation("ParentArticle");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("App.Core.Models.ArticleReviewer", b =>
+                {
+                    b.HasOne("App.Core.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("App.Core.Models.Article", "Article")
+                        .WithMany()
+                        .HasForeignKey("ArticleId");
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Article");
                 });
 
             modelBuilder.Entity("App.Core.Models.EditorToArticle", b =>

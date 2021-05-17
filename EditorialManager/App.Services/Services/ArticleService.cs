@@ -20,5 +20,10 @@ namespace App.Services.Services
         {
             return unitOfWork.Articles.GetArticlesByUserId(id);
         }
+
+        public IEnumerable<Article> GetReviewAllowedArticles()
+        {
+            return unitOfWork.Articles.GetReviewAllowedArticles();
+        }
     }
 }

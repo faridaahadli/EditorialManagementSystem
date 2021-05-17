@@ -8,5 +8,6 @@ namespace App.Core.Services
    public interface IArticleService:IService<Article>
     {
         IEnumerable<Article> GetArticlesByUserId(string id);
+        IEnumerable<Article> GetReviewAllowedArticles();
     }
 }

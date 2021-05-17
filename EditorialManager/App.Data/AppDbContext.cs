@@ -16,5 +16,6 @@ namespace App.Data
         DbSet<ArticleType> ArticleTypes { get; set; }
         DbSet<Article> Articles { get; set; }
         DbSet<EditorToArticle> EditorToArticles { get; set; }
+        DbSet<ArticleReviewer> ArticleReviewers { get; set; }
     }
 }

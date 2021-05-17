@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*@using App.Core.Models
+@model A
+<form asp-action="insert" asp-controller="ArticleReview" method="post">
+    <div class="form-group">
+
+            <label for="exampleFormControlTextarea1">If you have any note for the editor.</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Revi"></textarea>
+            <span asp-validation-for="Note" class="text-danger"></span>
+        </div>
+</form>*@
