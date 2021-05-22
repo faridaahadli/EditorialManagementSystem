@@ -3,13 +3,71 @@
 *@
 @{
 }
-@*@using App.Core.Models
-@model A
-<form asp-action="insert" asp-controller="ArticleReview" method="post">
-    <div class="form-group">
 
-            <label for="exampleFormControlTextarea1">If you have any note for the editor.</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Revi"></textarea>
-            <span asp-validation-for="Note" class="text-danger"></span>
+@using App.Core.Models
+@model Article
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <label>
+                <strong>Name: </strong>
+            </label>
+
+            <p>@Model.User.Firstname</p>
         </div>
-</form>*@
+        <div class="row">
+            <label><strong>Surname: </strong> </label>
+
+            <p>@Model.User.LastName</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <label>
+                <strong>Source: </strong>
+            </label>
+
+            <a target="_blank" href="/files/@Model.FilePath">
+                @Model.FilePath
+            </a>
+        </div>
+        <div class="row">
+            <label>
+                <strong>Article Type:  </strong>
+            </label>
+
+            <p> @Model.ArticleType.Name</p>
+
+        </div>
+        <div class="row">
+            <label>
+                <strong>Submit Date: </strong>
+            </label>
+
+            <p>@Model.SubmitDate</p>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="addreview" asp-controller="articlereview" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <textarea class="form-control" name="review">
+
+               </textarea>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="articleId" value="@Model.Id"/>
+              
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+

@@ -7,7 +7,7 @@ namespace EditorialManager.Models
 {
     public class ReviewerViewModel
     {
-        public string Name { get; set; }
+
         public string Surname { get; set; }
         public string Email { get; set; }
     }

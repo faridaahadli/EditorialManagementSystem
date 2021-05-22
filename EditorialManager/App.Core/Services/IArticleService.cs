@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace App.Core.Services
 {
@@ -9,5 +10,6 @@ namespace App.Core.Services
     {
         IEnumerable<Article> GetArticlesByUserId(string id);
         IEnumerable<Article> GetReviewAllowedArticles();
+        Article GetByIdWithAllElementsAsync(int id);
     }
 }

@@ -102,3 +102,4 @@ C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManage
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\obj\Debug\net5.0\Razor\Views\Submission\SubmissionInfo.cshtml.g.cs
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\obj\Debug\net5.0\Razor\Views\Submission\ReviewArticles.cshtml.g.cs
 C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\obj\Debug\net5.0\Razor\Views\ArticleReview\Index.cshtml.g.cs
+C:\Users\EHEDLI FARIDA\Desktop\Editorialmanager\EditorialManager\EditorialManager\obj\Debug\net5.0\Razor\Views\ArticleReview\ReviewedArticles.cshtml.g.cs

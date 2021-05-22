@@ -23,7 +23,9 @@ namespace App.Data.UnitOfWorks
         public IArticleTypeRepository ArticleTypes => _articleTypeRepository = _articleTypeRepository
             ?? new ArticleTypeRepository(_context);
 
-        public IArticleReviewRepository ArticleReviews => throw new NotImplementedException();
+        private ArticleReviewRepository _articleReviewRepository;
+        public IArticleReviewRepository ArticleReviews => _articleReviewRepository = _articleReviewRepository
+            ?? new ArticleReviewRepository(_context);
 
         private readonly AppDbContext _context;
         public UnitOfWork(AppDbContext context)

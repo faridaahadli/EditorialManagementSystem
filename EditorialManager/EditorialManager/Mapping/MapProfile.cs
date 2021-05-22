@@ -17,6 +17,7 @@ namespace EditorialManager.Mapping
             CreateMap<ArticleInsDto, EditorToArticle>()
                 .ForMember(dst=>dst.UserId,opt=>opt.MapFrom(src=>src.EditorId));
             CreateMap<ReviewInsDto,ArticleReviewer>();
+           
         }
        
     }

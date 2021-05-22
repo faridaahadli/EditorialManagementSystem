@@ -41,6 +41,7 @@ namespace EditorialManager
             services.AddTransient<IUniService, UniService>();
             services.AddTransient<IArticleTypeService, ArticleTypeService>();
             services.AddTransient<IArticleService,ArticleService>();
+            services.AddTransient<IArticleReviewService,ArticleReviewService>();
             services.AddTransient<IEditorToArticleService,EditorToArticleService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();           
             services.AddAutoMapper(typeof(Startup));

@@ -10,5 +10,6 @@ namespace App.Core.Repositories
     {
         IEnumerable<Article> GetArticlesByUserId(string id);
         IEnumerable<Article> GetReviewAllowedArticles();
+        Article GetByIdWithAllElementsAsync(int id);
     }
 }

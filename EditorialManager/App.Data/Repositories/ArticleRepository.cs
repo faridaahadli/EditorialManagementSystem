@@ -24,6 +24,12 @@ namespace App.Data.Repositories
                 .Where(p => p.UserId == id);
         }
 
+        public Article GetByIdWithAllElementsAsync(int id)
+        {
+            return  _context.Set<Article>().Include(prop => prop.ArticleType).Include(p=>p.User)
+                .FirstOrDefault(p => p.Id == id);
+        }
+
         public IEnumerable<Article> GetReviewAllowedArticles()
         {
             var list = _context.Set<Article>().Include(p => p.ArticleType)
